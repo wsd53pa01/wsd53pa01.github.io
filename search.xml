@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hexo快速建立部落格參考資料</title>
+    <url>/2020/02/08/Hexo%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%AB%8B%E9%83%A8%E8%90%BD%E6%A0%BC%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99/</url>
+    <content><![CDATA[<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://junyou.tw/hexo/" target="_blank" rel="noopener">https://junyou.tw/hexo/</a></li>
+</ul>
+<h2 id="當-hexo-d-發生錯誤時"><a href="#當-hexo-d-發生錯誤時" class="headerlink" title="當 $ hexo d 發生錯誤時"></a>當 $ hexo d 發生錯誤時</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+</search>

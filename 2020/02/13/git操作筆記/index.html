@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="資料參考  Vim 模式 分為 Normal 模式 &amp; Insert 模式   使用 ESC 或 Ctrl + [ 可切換到 Normal 模式 :w 存檔 :q 離開 :wq 存檔離開   Normal 模式輸入 i or a or o 可切換到 Insert 模式 i &#x3D; Insert  a &#x3D; append o &#x3D; new line">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git 操作筆記">
+<meta property="og:url" content="http://yoursite.com/2020/02/13/git%E6%93%8D%E4%BD%9C%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:site_name" content="Wilson瞎折騰">
+<meta property="og:description" content="資料參考  Vim 模式 分為 Normal 模式 &amp; Insert 模式   使用 ESC 或 Ctrl + [ 可切換到 Normal 模式 :w 存檔 :q 離開 :wq 存檔離開   Normal 模式輸入 i or a or o 可切換到 Insert 模式 i &#x3D; Insert  a &#x3D; append o &#x3D; new line">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/images/learn-git.png">
+<meta property="og:image" content="http://yoursite.com/images/amend-modify-commit.png">
+<meta property="og:image" content="http://yoursite.com/images/make-up-the-file.jpg">
+<meta property="og:image" content="http://yoursite.com/images/make-up-empty-folder.jpg">
+<meta property="og:image" content="http://yoursite.com/images/restore-files.jpg">
+<meta property="article:published_time" content="2020-02-13T11:08:13.000Z">
+<meta property="article:modified_time" content="2020-02-13T15:41:01.883Z">
+<meta property="article:author" content="Wilson Huang">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/learn-git.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/13/git%E6%93%8D%E4%BD%9C%E7%AD%86%E8%A8%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>git 操作筆記 | Wilson瞎折騰</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wilson瞎折騰</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/13/git%E6%93%8D%E4%BD%9C%E7%AD%86%E8%A8%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wilson Huang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wilson瞎折騰">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          git 操作筆記
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-02-13 19:08:13 / 修改時間：23:41:01" itemprop="dateCreated datePublished" datetime="2020-02-13T19:08:13+08:00">2020-02-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="資料參考"><a href="#資料參考" class="headerlink" title="資料參考"></a>資料參考</h1><img src="/images/learn-git.png" alt="為你自己學Git" style="zoom:50%;" />
+
+<h1 id="Vim-模式"><a href="#Vim-模式" class="headerlink" title="Vim 模式"></a>Vim 模式</h1><blockquote>
+<p>分為 Normal 模式 &amp; Insert 模式</p>
+</blockquote>
+<ul>
+<li>使用 ESC 或 Ctrl + [ 可切換到 Normal 模式<ul>
+<li>:w 存檔</li>
+<li>:q 離開</li>
+<li>:wq 存檔離開</li>
+</ul>
+</li>
+<li>Normal 模式輸入 i or a or o 可切換到 Insert 模式<ul>
+<li>i = Insert </li>
+<li>a = append</li>
+<li>o = new line</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="Git-Bash-Alias-設定"><a href="#Git-Bash-Alias-設定" class="headerlink" title="Git Bash Alias 設定"></a>Git Bash Alias 設定</h1><ul>
+<li><p>可以到 ~/.gitconfig 裡面設定</p>
+</li>
+<li><p>也可以到 .git 資料夾裡面的 config 檔案做設定</p>
+</li>
+<li><p>建議設定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[alias]</span><br><span class="line">	co &#x3D; checkout</span><br><span class="line">	br &#x3D; branch</span><br><span class="line">	st &#x3D; status</span><br><span class="line">	l &#x3D; log --online --graph</span><br><span class="line">	ls &#x3D;log --graph --pretty&#x3D;format:&quot;%h &lt;%an&gt; %ar %s&quot;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h1 id="查詢-Git-Log"><a href="#查詢-Git-Log" class="headerlink" title="查詢 Git Log"></a>查詢 Git Log</h1><p><a href="https://git-scm.com/book/zh-tw/v2/Git-%E5%9F%BA%E7%A4%8E-%E6%AA%A2%E8%A6%96%E6%8F%90%E4%BA%A4%E7%9A%84%E6%AD%B7%E5%8F%B2%E8%A8%98%E9%8C%84" target="_blank" rel="noopener">更詳細的檢視提交的歷史記錄</a></p>
+<h2 id="找-Commit-訊息裡面有紀錄金流串接的訊息"><a href="#找-Commit-訊息裡面有紀錄金流串接的訊息" class="headerlink" title="找 Commit 訊息裡面有紀錄金流串接的訊息"></a>找 Commit 訊息裡面有紀錄金流串接的訊息</h2><blockquote>
+<p>使用 –grep 參數</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --online --grep=<span class="string">"金流串接"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="找-Commit-的檔案內容有提到-“insert-into”-的語法"><a href="#找-Commit-的檔案內容有提到-“insert-into”-的語法" class="headerlink" title="找 Commit 的檔案內容有提到 “insert into” 的語法"></a>找 Commit 的檔案內容有提到 “insert into” 的語法</h2><blockquote>
+<p>使用 -S 參數，可以搜尋 Commit 的檔案內容中，那些有使用到 SQL 的 insert into 語法</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> -S <span class="string">"insert into"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="檢查-TimeSheet-的時候發現有天忘記寫了，查詢-git-log-看看那天在幹嘛"><a href="#檢查-TimeSheet-的時候發現有天忘記寫了，查詢-git-log-看看那天在幹嘛" class="headerlink" title="檢查 TimeSheet 的時候發現有天忘記寫了，查詢 git log 看看那天在幹嘛"></a>檢查 TimeSheet 的時候發現有天忘記寫了，查詢 git log 看看那天在幹嘛</h2><blockquote>
+<p>–since、–until、–after 、–before 一起使用</p>
+</blockquote>
+<p>舉例：我想找 2019-01-03 這一天在幹嘛</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --oneline --since=<span class="string">"8am"</span> --until=<span class="string">"5pm"</span> --after=<span class="string">"2019-01-02"</span> --before=<span class="string">"2019-01-03"</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="修改-Commit-紀錄"><a href="#修改-Commit-紀錄" class="headerlink" title="修改 Commit 紀錄"></a>修改 Commit 紀錄</h1><h2 id="為你自己學Git的經典例子，假如你在-Commit-訊息裡把客戶給罵了"><a href="#為你自己學Git的經典例子，假如你在-Commit-訊息裡把客戶給罵了" class="headerlink" title="為你自己學Git的經典例子，假如你在 Commit 訊息裡把客戶給罵了"></a>為你自己學Git的經典例子，假如你在 Commit 訊息裡把客戶給罵了</h2><p>有以下幾點方法：</p>
+<ol>
+<li>把 .git 目錄刪了 (不可取)</li>
+<li><code>git rebase</code> 修改黑歷史</li>
+<li><code>git reset</code> 重新 Commit</li>
+<li><code>--amend</code> 修改作後一次的 Commit</li>
+</ol>
+<h3 id="–amend-修改-Commit"><a href="#–amend-修改-Commit" class="headerlink" title="–amend 修改 Commit"></a>–amend 修改 Commit</h3><img src="/images/amend-modify-commit.png" />
+
+<h2 id="Commit-後才發現漏了一個檔案，想要補檔案回去"><a href="#Commit-後才發現漏了一個檔案，想要補檔案回去" class="headerlink" title="Commit 後才發現漏了一個檔案，想要補檔案回去"></a>Commit 後才發現漏了一個檔案，想要補檔案回去</h2><blockquote>
+<p><code>--no-edit</code> ：不編輯 Commit 訊息。</p>
+</blockquote>
+<img src="/images/make-up-the-file.jpg" />
+
+<h2 id="新增一個空的目錄到-repository-裡面"><a href="#新增一個空的目錄到-repository-裡面" class="headerlink" title="新增一個空的目錄到 repository 裡面"></a>新增一個空的目錄到 repository 裡面</h2><blockquote>
+<p>有時候開專案，都會想把一些常見的目錄開一開，可暫時沒資料，但是有潔癖的我不想亂塞檔案，又想把目錄同時被 commit 進去，這時候可以在目錄裡面放 <code>.gitkeep</code> 檔案。</p>
+</blockquote>
+<img src="/images/make-up-empty-folder.jpg" />
+
+<h2 id="檢視-Commit-的檔案紀錄"><a href="#檢視-Commit-的檔案紀錄" class="headerlink" title="檢視 Commit 的檔案紀錄"></a>檢視 Commit 的檔案紀錄</h2><h3 id="找出誰養的蟲"><a href="#找出誰養的蟲" class="headerlink" title="找出誰養的蟲"></a>找出誰養的蟲</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git blame index.html</span><br></pre></td></tr></table></figure>
+
+<h1 id="拯救手殘不小心把檔案或目錄刪掉的人"><a href="#拯救手殘不小心把檔案或目錄刪掉的人" class="headerlink" title="拯救手殘不小心把檔案或目錄刪掉的人"></a>拯救手殘不小心把檔案或目錄刪掉的人</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout .</span><br></pre></td></tr></table></figure>
+
+<p>或是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;檔案&gt;</span><br></pre></td></tr></table></figure>
+
+<img src="/images/restore-files.jpg" />
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"># git</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/12/hexo-%E8%BD%89%E7%A7%BB%E6%AD%A5%E9%A9%9F/" rel="prev" title="hexo 轉移步驟">
+      <i class="fa fa-chevron-left"></i> hexo 轉移步驟
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#資料參考"><span class="nav-number">1.</span> <span class="nav-text">資料參考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim-模式"><span class="nav-number">2.</span> <span class="nav-text">Vim 模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-Bash-Alias-設定"><span class="nav-number">3.</span> <span class="nav-text">Git Bash Alias 設定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查詢-Git-Log"><span class="nav-number">4.</span> <span class="nav-text">查詢 Git Log</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#找-Commit-訊息裡面有紀錄金流串接的訊息"><span class="nav-number">4.1.</span> <span class="nav-text">找 Commit 訊息裡面有紀錄金流串接的訊息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找-Commit-的檔案內容有提到-“insert-into”-的語法"><span class="nav-number">4.2.</span> <span class="nav-text">找 Commit 的檔案內容有提到 “insert into” 的語法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#檢查-TimeSheet-的時候發現有天忘記寫了，查詢-git-log-看看那天在幹嘛"><span class="nav-number">4.3.</span> <span class="nav-text">檢查 TimeSheet 的時候發現有天忘記寫了，查詢 git log 看看那天在幹嘛</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改-Commit-紀錄"><span class="nav-number">5.</span> <span class="nav-text">修改 Commit 紀錄</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#為你自己學Git的經典例子，假如你在-Commit-訊息裡把客戶給罵了"><span class="nav-number">5.1.</span> <span class="nav-text">為你自己學Git的經典例子，假如你在 Commit 訊息裡把客戶給罵了</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#–amend-修改-Commit"><span class="nav-number">5.1.1.</span> <span class="nav-text">–amend 修改 Commit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Commit-後才發現漏了一個檔案，想要補檔案回去"><span class="nav-number">5.2.</span> <span class="nav-text">Commit 後才發現漏了一個檔案，想要補檔案回去</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新增一個空的目錄到-repository-裡面"><span class="nav-number">5.3.</span> <span class="nav-text">新增一個空的目錄到 repository 裡面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#檢視-Commit-的檔案紀錄"><span class="nav-number">5.4.</span> <span class="nav-text">檢視 Commit 的檔案紀錄</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#找出誰養的蟲"><span class="nav-number">5.4.1.</span> <span class="nav-text">找出誰養的蟲</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拯救手殘不小心把檔案或目錄刪掉的人"><span class="nav-number">6.</span> <span class="nav-text">拯救手殘不小心把檔案或目錄刪掉的人</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wilson Huang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wilson Huang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

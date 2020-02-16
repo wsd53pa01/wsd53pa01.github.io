@@ -73,12 +73,95 @@
 
 <h2 id="檢視-Commit-的檔案紀錄"><a href="#檢視-Commit-的檔案紀錄" class="headerlink" title="檢視 Commit 的檔案紀錄"></a>檢視 Commit 的檔案紀錄</h2><h3 id="找出誰養的蟲"><a href="#找出誰養的蟲" class="headerlink" title="找出誰養的蟲"></a>找出誰養的蟲</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git blame index.html</span><br></pre></td></tr></table></figure>
 
-<h1 id="拯救手殘不小心把檔案或目錄刪掉的人"><a href="#拯救手殘不小心把檔案或目錄刪掉的人" class="headerlink" title="拯救手殘不小心把檔案或目錄刪掉的人"></a>拯救手殘不小心把檔案或目錄刪掉的人</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout .</span><br></pre></td></tr></table></figure>
+<h1 id="拯救手殘不小心把檔案或目錄刪掉的人"><a href="#拯救手殘不小心把檔案或目錄刪掉的人" class="headerlink" title="拯救手殘不小心把檔案或目錄刪掉的人"></a>拯救手殘不小心把檔案或目錄刪掉的人</h1><blockquote>
+<p>checkout 會將檔案或目錄復原到上一個 Commit 的狀態，所以如果加上 HEAD~2 參數會復原到兩個版本以前的檔案狀態。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout .</span><br></pre></td></tr></table></figure>
 
 <p>或是</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout &lt;檔案&gt;</span><br></pre></td></tr></table></figure>
 
-<img src="/images/restore-files.jpg" />]]></content>
+<img src="/images/restore-files.jpg" />
+
+<h1 id="Commit-後想重新來一遍該怎麼做"><a href="#Commit-後想重新來一遍該怎麼做" class="headerlink" title="Commit 後想重新來一遍該怎麼做"></a>Commit 後想重新來一遍該怎麼做</h1><h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a><code>git reset</code></h2><h3 id="假設我今天寫了很笨的程式還Commit了，想要打掉重練要怎麼做"><a href="#假設我今天寫了很笨的程式還Commit了，想要打掉重練要怎麼做" class="headerlink" title="假設我今天寫了很笨的程式還Commit了，想要打掉重練要怎麼做?"></a>假設我今天寫了很笨的程式還Commit了，想要打掉重練要怎麼做?</h3><img src="/images/git-reset-01.jpg" />
+
+<blockquote>
+<p>reset 後面可再加上 [ –mixed| –soft | –hard ] <a href="https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified" target="_blank" rel="noopener">詳細說明參考</a></p>
+</blockquote>
+<p>可以輸入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset 8bfaa88^</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset master^</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset HEAD^</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset 17776c7</span><br></pre></td></tr></table></figure>
+
+<h3 id="如果我發現直接拿原本的程式直接重構比較快，想回到剛才的-Commit-要怎麼做"><a href="#如果我發現直接拿原本的程式直接重構比較快，想回到剛才的-Commit-要怎麼做" class="headerlink" title="如果我發現直接拿原本的程式直接重構比較快，想回到剛才的 Commit 要怎麼做?"></a>如果我發現直接拿原本的程式直接重構比較快，想回到剛才的 Commit 要怎麼做?</h3><blockquote>
+<p>搭配 <code>git reflog</code>，一般來說我們不會記錄 reset 前的 SHA-1 值，所以要用 <code>git reflog</code> 的紀錄來找。</p>
+</blockquote>
+<h1 id="git-branch-的操作"><a href="#git-branch-的操作" class="headerlink" title="git branch 的操作"></a><code>git branch</code> 的操作</h1><h2 id="想修改手殘打錯的-branch-名稱"><a href="#想修改手殘打錯的-branch-名稱" class="headerlink" title="想修改手殘打錯的 branch 名稱"></a>想修改手殘打錯的 branch 名稱</h2><blockquote>
+<p>可以使用 <code>-m</code> 參數。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -m &lt;old_branch_name&gt; &lt;new_branch_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="刪除分支的時候"><a href="#刪除分支的時候" class="headerlink" title="刪除分支的時候"></a>刪除分支的時候</h2><blockquote>
+<p>可使用 <code>-d</code> 或 <code>-D</code> 參數。</p>
+<p><code>-D</code>：強制刪除</p>
+<p><code>-d</code>：會因為沒有被合併而無法刪除分之</p>
+<p><a href="https://git-scm.com/book/en/v2/Git-Branching-Branch-Management" target="_blank" rel="noopener">參考資料</a></p>
+</blockquote>
+<h2 id="在過去的-Commit-開啟分支的方式"><a href="#在過去的-Commit-開啟分支的方式" class="headerlink" title="在過去的 Commit 開啟分支的方式"></a>在過去的 Commit 開啟分支的方式</h2><p>第一種、</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout &lt;Commit-SHA-1值&gt;</span><br><span class="line">$ git checkout -b &lt;new-branch-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>第二種、</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch &lt;new-branch-name&gt; &lt;commit-SHA-1值&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a><code>git rebase</code></h1><h2 id="另一種分支的合併方式"><a href="#另一種分支的合併方式" class="headerlink" title="另一種分支的合併方式"></a>另一種分支的合併方式</h2><p>合併的一般做法</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch master</span><br><span class="line">$ git merge &lt;your_branch_name&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>git rebase</code>：可以重新定義，分支的基準點，rebase 會再重新計算出新的 Commit 物件，再將分支指向新的 Commit 物件。可直接參考<a href="https://git-scm.com/docs/git-rebase" target="_blank" rel="noopener">官方詳細資料</a></p>
+<p>如下圖</p>
+<img src="/images/git-rebase-01.jpg" />
+
+<img src="/images/git-rebase-02.jpg" />
+
+<img src="/images/git-rebase-03.jpg" />
+
+<h2 id="修改過去的-Commit-訊息"><a href="#修改過去的-Commit-訊息" class="headerlink" title="修改過去的 Commit 訊息"></a>修改過去的 Commit 訊息</h2><blockquote>
+<p>可以先設定 git conifg –local core.editor notepad (或是其他的編輯工具)</p>
+</blockquote>
+<ol>
+<li>先使用 <code>git log</code>查詢要修改的 Commit </li>
+</ol>
+<img src="/images/git-rebase-i-01.jpg" />
+
+<ol start="2">
+<li>接著選擇我們修改目標的前一個值，git 就會帶出比輸入的 Commit 還新的紀錄。</li>
+</ol>
+<img src="/images/git-rebase-i-02.jpg" />
+
+<img src="/images/git-rebase-i-03.jpg" />
+
+<ol start="3">
+<li>再將 pick 修改成 r，存檔關閉。</li>
+</ol>
+<img src="/images/git-rebase-i-04.jpg" />
+
+<ol start="4">
+<li>關閉後就會再自動開啟記事本修改 commit ，修改完後存檔離開。</li>
+</ol>
+<img src="/images/git-rebase-i-05.jpg" />
+
+<ol start="5">
+<li>再回去查詢一下次，就會看到 Commit 被修改。</li>
+</ol>
+<img src="/images/git-rebase-i-06.jpg" />]]></content>
       <categories>
         <category>git</category>
       </categories>

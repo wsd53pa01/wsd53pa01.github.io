@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>developer roadmap study</title>
+    <url>/2020/03/05/developer%20roadmap%20study/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>study</category>
+      </categories>
+      <tags>
+        <tag>study</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git 操作筆記</title>
     <url>/2020/02/13/git%E6%93%8D%E4%BD%9C%E7%AD%86%E8%A8%98/</url>
     <content><![CDATA[<h1 id="資料參考"><a href="#資料參考" class="headerlink" title="資料參考"></a>資料參考</h1><img src="/images/learn-git.png" alt="為你自己學Git" style="zoom:50%;" />
@@ -161,7 +172,14 @@
 <ol start="5">
 <li>再回去查詢一下次，就會看到 Commit 被修改。</li>
 </ol>
-<img src="/images/git-rebase-i-06.jpg" />]]></content>
+<img src="/images/git-rebase-i-06.jpg" />
+
+<h1 id="git-revert"><a href="#git-revert" class="headerlink" title="git revert"></a><code>git revert</code></h1><ul>
+<li>revert 會新增一個 Commit  來取消另一個 Commit 的內容。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git revert HEAD --no-edit</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>git</category>
       </categories>

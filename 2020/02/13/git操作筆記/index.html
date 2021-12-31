@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>git 操作筆記 | WH 不負責任小筆記</title>
+  <meta name="keywords" content=" git ">
+  <meta name="description" content="git 操作筆記 | WH 不負責任小筆記">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="分類">
+<meta property="og:url" content="http://example.com/categories/index.html">
+<meta property="og:site_name" content="WH 不負責任小筆記">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-02-10T13:20:27.000Z">
+<meta property="article:modified_time" content="2021-12-31T10:24:03.480Z">
+<meta property="article:author" content="Wilson Huang">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Wilson Huang</span>
+</div>
+
+<div class="icon">
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(4)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="git">
+                        
+                        git
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="hexo">
+                        
+                        hexo
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="study">
+                        
+                        study
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="4">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>study</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="All study "
+           href="/2020/03/05/developer%20roadmap%20study/"
+           data-tag="study"
+           data-author="" >
+            <span class="post-title" title="developer roadmap study">developer roadmap study</span>
+            <span class="post-date" title="2020-03-05 08:36:13">2020/03/05</span>
+        </a>
+        
+        <a  class="All git "
+           href="/2020/02/13/git%E6%93%8D%E4%BD%9C%E7%AD%86%E8%A8%98/"
+           data-tag="git"
+           data-author="" >
+            <span class="post-title" title="git 操作筆記">git 操作筆記</span>
+            <span class="post-date" title="2020-02-13 19:08:13">2020/02/13</span>
+        </a>
+        
+        <a  class="All hexo "
+           href="/2020/02/12/hexo-%E8%BD%89%E7%A7%BB%E6%AD%A5%E9%A9%9F/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo 轉移步驟">hexo 轉移步驟</span>
+            <span class="post-date" title="2020-02-12 18:51:13">2020/02/12</span>
+        </a>
+        
+        <a  class="All "
+           href="/2020/02/08/Hexo%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%AB%8B%E9%83%A8%E8%90%BD%E6%A0%BC%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo快速建立部落格參考資料">Hexo快速建立部落格參考資料</span>
+            <span class="post-date" title="2020-02-08 20:01:34">2020/02/08</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-git操作筆記" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">git 操作筆記</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="git">git</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">git</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2021-12-31 18:24:03'>2020-02-13 19:08</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <!-- <span id="busuanzi_container_page_pv">
+             Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span> -->
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="toc-text">資料參考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vim-%E6%A8%A1%E5%BC%8F"><span class="toc-text">Vim 模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-Bash-Alias-%E8%A8%AD%E5%AE%9A"><span class="toc-text">Git Bash Alias 設定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2-Git-Log"><span class="toc-text">查詢 Git Log</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BE-Commit-%E8%A8%8A%E6%81%AF%E8%A3%A1%E9%9D%A2%E6%9C%89%E7%B4%80%E9%8C%84%E9%87%91%E6%B5%81%E4%B8%B2%E6%8E%A5%E7%9A%84%E8%A8%8A%E6%81%AF"><span class="toc-text">找 Commit 訊息裡面有紀錄金流串接的訊息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BE-Commit-%E7%9A%84%E6%AA%94%E6%A1%88%E5%85%A7%E5%AE%B9%E6%9C%89%E6%8F%90%E5%88%B0-%E2%80%9Cinsert-into%E2%80%9D-%E7%9A%84%E8%AA%9E%E6%B3%95"><span class="toc-text">找 Commit 的檔案內容有提到 “insert into” 的語法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AA%A2%E6%9F%A5-TimeSheet-%E7%9A%84%E6%99%82%E5%80%99%E7%99%BC%E7%8F%BE%E6%9C%89%E5%A4%A9%E5%BF%98%E8%A8%98%E5%AF%AB%E4%BA%86%EF%BC%8C%E6%9F%A5%E8%A9%A2-git-log-%E7%9C%8B%E7%9C%8B%E9%82%A3%E5%A4%A9%E5%9C%A8%E5%B9%B9%E5%98%9B"><span class="toc-text">檢查 TimeSheet 的時候發現有天忘記寫了，查詢 git log 看看那天在幹嘛</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-Commit-%E7%B4%80%E9%8C%84"><span class="toc-text">修改 Commit 紀錄</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8Git%E7%9A%84%E7%B6%93%E5%85%B8%E4%BE%8B%E5%AD%90%EF%BC%8C%E5%81%87%E5%A6%82%E4%BD%A0%E5%9C%A8-Commit-%E8%A8%8A%E6%81%AF%E8%A3%A1%E6%8A%8A%E5%AE%A2%E6%88%B6%E7%B5%A6%E7%BD%B5%E4%BA%86"><span class="toc-text">為你自己學Git的經典例子，假如你在 Commit 訊息裡把客戶給罵了</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%93amend-%E4%BF%AE%E6%94%B9-Commit"><span class="toc-text">–amend 修改 Commit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Commit-%E5%BE%8C%E6%89%8D%E7%99%BC%E7%8F%BE%E6%BC%8F%E4%BA%86%E4%B8%80%E5%80%8B%E6%AA%94%E6%A1%88%EF%BC%8C%E6%83%B3%E8%A6%81%E8%A3%9C%E6%AA%94%E6%A1%88%E5%9B%9E%E5%8E%BB"><span class="toc-text">Commit 後才發現漏了一個檔案，想要補檔案回去</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E4%B8%80%E5%80%8B%E7%A9%BA%E7%9A%84%E7%9B%AE%E9%8C%84%E5%88%B0-repository-%E8%A3%A1%E9%9D%A2"><span class="toc-text">新增一個空的目錄到 repository 裡面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AA%A2%E8%A6%96-Commit-%E7%9A%84%E6%AA%94%E6%A1%88%E7%B4%80%E9%8C%84"><span class="toc-text">檢視 Commit 的檔案紀錄</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%87%BA%E8%AA%B0%E9%A4%8A%E7%9A%84%E8%9F%B2"><span class="toc-text">找出誰養的蟲</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%AF%E6%95%91%E6%89%8B%E6%AE%98%E4%B8%8D%E5%B0%8F%E5%BF%83%E6%8A%8A%E6%AA%94%E6%A1%88%E6%88%96%E7%9B%AE%E9%8C%84%E5%88%AA%E6%8E%89%E7%9A%84%E4%BA%BA"><span class="toc-text">拯救手殘不小心把檔案或目錄刪掉的人</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Commit-%E5%BE%8C%E6%83%B3%E9%87%8D%E6%96%B0%E4%BE%86%E4%B8%80%E9%81%8D%E8%A9%B2%E6%80%8E%E9%BA%BC%E5%81%9A"><span class="toc-text">Commit 後想重新來一遍該怎麼做</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-reset"><span class="toc-text">git reset</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%87%E8%A8%AD%E6%88%91%E4%BB%8A%E5%A4%A9%E5%AF%AB%E4%BA%86%E5%BE%88%E7%AC%A8%E7%9A%84%E7%A8%8B%E5%BC%8F%E9%82%84Commit%E4%BA%86%EF%BC%8C%E6%83%B3%E8%A6%81%E6%89%93%E6%8E%89%E9%87%8D%E7%B7%B4%E8%A6%81%E6%80%8E%E9%BA%BC%E5%81%9A"><span class="toc-text">假設我今天寫了很笨的程式還Commit了，想要打掉重練要怎麼做?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E6%88%91%E7%99%BC%E7%8F%BE%E7%9B%B4%E6%8E%A5%E6%8B%BF%E5%8E%9F%E6%9C%AC%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%9B%B4%E6%8E%A5%E9%87%8D%E6%A7%8B%E6%AF%94%E8%BC%83%E5%BF%AB%EF%BC%8C%E6%83%B3%E5%9B%9E%E5%88%B0%E5%89%9B%E6%89%8D%E7%9A%84-Commit-%E8%A6%81%E6%80%8E%E9%BA%BC%E5%81%9A"><span class="toc-text">如果我發現直接拿原本的程式直接重構比較快，想回到剛才的 Commit 要怎麼做?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git-branch-%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">git branch 的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E4%BF%AE%E6%94%B9%E6%89%8B%E6%AE%98%E6%89%93%E9%8C%AF%E7%9A%84-branch-%E5%90%8D%E7%A8%B1"><span class="toc-text">想修改手殘打錯的 branch 名稱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%AA%E9%99%A4%E5%88%86%E6%94%AF%E7%9A%84%E6%99%82%E5%80%99"><span class="toc-text">刪除分支的時候</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E9%81%8E%E5%8E%BB%E7%9A%84-Commit-%E9%96%8B%E5%95%9F%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">在過去的 Commit 開啟分支的方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git-rebase"><span class="toc-text">git rebase</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A6%E4%B8%80%E7%A8%AE%E5%88%86%E6%94%AF%E7%9A%84%E5%90%88%E4%BD%B5%E6%96%B9%E5%BC%8F"><span class="toc-text">另一種分支的合併方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%81%8E%E5%8E%BB%E7%9A%84-Commit-%E8%A8%8A%E6%81%AF"><span class="toc-text">修改過去的 Commit 訊息</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git-revert"><span class="toc-text">git revert</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="資料參考"><a href="#資料參考" class="headerlink" title="資料參考"></a>資料參考</h1><img src="/images/learn-git.png" alt="為你自己學Git" style="zoom:50%;" />
+
+<h1 id="Vim-模式"><a href="#Vim-模式" class="headerlink" title="Vim 模式"></a>Vim 模式</h1><blockquote>
+<p>分為 Normal 模式 &amp; Insert 模式</p>
+</blockquote>
+<ul>
+<li>使用 ESC 或 Ctrl + [ 可切換到 Normal 模式<ul>
+<li>:w 存檔</li>
+<li>:q 離開</li>
+<li>:wq 存檔離開</li>
+</ul>
+</li>
+<li>Normal 模式輸入 i or a or o 可切換到 Insert 模式<ul>
+<li>i = Insert </li>
+<li>a = append</li>
+<li>o = new line</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="Git-Bash-Alias-設定"><a href="#Git-Bash-Alias-設定" class="headerlink" title="Git Bash Alias 設定"></a>Git Bash Alias 設定</h1><ul>
+<li><p>可以到 ~/.gitconfig 裡面設定</p>
+</li>
+<li><p>也可以到 .git 資料夾裡面的 config 檔案做設定</p>
+</li>
+<li><p>建議設定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[alias]</span><br><span class="line">	co = checkout</span><br><span class="line">	br = branch</span><br><span class="line">	st = status</span><br><span class="line">	l = log --online --graph</span><br><span class="line">	ls =log --graph --pretty=format:&quot;%h &lt;%an&gt; %ar %s&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="查詢-Git-Log"><a href="#查詢-Git-Log" class="headerlink" title="查詢 Git Log"></a>查詢 Git Log</h1><p><a target="_blank" rel="noopener" href="https://git-scm.com/book/zh-tw/v2/Git-%E5%9F%BA%E7%A4%8E-%E6%AA%A2%E8%A6%96%E6%8F%90%E4%BA%A4%E7%9A%84%E6%AD%B7%E5%8F%B2%E8%A8%98%E9%8C%84">更詳細的檢視提交的歷史記錄</a></p>
+<h2 id="找-Commit-訊息裡面有紀錄金流串接的訊息"><a href="#找-Commit-訊息裡面有紀錄金流串接的訊息" class="headerlink" title="找 Commit 訊息裡面有紀錄金流串接的訊息"></a>找 Commit 訊息裡面有紀錄金流串接的訊息</h2><blockquote>
+<p>使用 –grep 參數</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --online --grep=<span class="string">&quot;金流串接&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="找-Commit-的檔案內容有提到-“insert-into”-的語法"><a href="#找-Commit-的檔案內容有提到-“insert-into”-的語法" class="headerlink" title="找 Commit 的檔案內容有提到 “insert into” 的語法"></a>找 Commit 的檔案內容有提到 “insert into” 的語法</h2><blockquote>
+<p>使用 -S 參數，可以搜尋 Commit 的檔案內容中，那些有使用到 SQL 的 insert into 語法</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> -S <span class="string">&quot;insert into&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="檢查-TimeSheet-的時候發現有天忘記寫了，查詢-git-log-看看那天在幹嘛"><a href="#檢查-TimeSheet-的時候發現有天忘記寫了，查詢-git-log-看看那天在幹嘛" class="headerlink" title="檢查 TimeSheet 的時候發現有天忘記寫了，查詢 git log 看看那天在幹嘛"></a>檢查 TimeSheet 的時候發現有天忘記寫了，查詢 git log 看看那天在幹嘛</h2><blockquote>
+<p>–since、–until、–after 、–before 一起使用</p>
+</blockquote>
+<p>舉例：我想找 2019-01-03 這一天在幹嘛</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --oneline --since=<span class="string">&quot;8am&quot;</span> --until=<span class="string">&quot;5pm&quot;</span> --after=<span class="string">&quot;2019-01-02&quot;</span> --before=<span class="string">&quot;2019-01-03&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="修改-Commit-紀錄"><a href="#修改-Commit-紀錄" class="headerlink" title="修改 Commit 紀錄"></a>修改 Commit 紀錄</h1><h2 id="為你自己學Git的經典例子，假如你在-Commit-訊息裡把客戶給罵了"><a href="#為你自己學Git的經典例子，假如你在-Commit-訊息裡把客戶給罵了" class="headerlink" title="為你自己學Git的經典例子，假如你在 Commit 訊息裡把客戶給罵了"></a>為你自己學Git的經典例子，假如你在 Commit 訊息裡把客戶給罵了</h2><p>有以下幾點方法：</p>
+<ol>
+<li>把 .git 目錄刪了 (不可取)</li>
+<li><code>git rebase</code> 修改黑歷史</li>
+<li><code>git reset</code> 重新 Commit</li>
+<li><code>--amend</code> 修改作後一次的 Commit</li>
+</ol>
+<h3 id="–amend-修改-Commit"><a href="#–amend-修改-Commit" class="headerlink" title="–amend 修改 Commit"></a>–amend 修改 Commit</h3><img src="/images/amend-modify-commit.png" />
+
+<h2 id="Commit-後才發現漏了一個檔案，想要補檔案回去"><a href="#Commit-後才發現漏了一個檔案，想要補檔案回去" class="headerlink" title="Commit 後才發現漏了一個檔案，想要補檔案回去"></a>Commit 後才發現漏了一個檔案，想要補檔案回去</h2><blockquote>
+<p><code>--no-edit</code> ：不編輯 Commit 訊息。</p>
+</blockquote>
+<img src="/images/make-up-the-file.jpg" />
+
+<h2 id="新增一個空的目錄到-repository-裡面"><a href="#新增一個空的目錄到-repository-裡面" class="headerlink" title="新增一個空的目錄到 repository 裡面"></a>新增一個空的目錄到 repository 裡面</h2><blockquote>
+<p>有時候開專案，都會想把一些常見的目錄開一開，可暫時沒資料，但是有潔癖的我不想亂塞檔案，又想把目錄同時被 commit 進去，這時候可以在目錄裡面放 <code>.gitkeep</code> 檔案。</p>
+</blockquote>
+<img src="/images/make-up-empty-folder.jpg" />
+
+<h2 id="檢視-Commit-的檔案紀錄"><a href="#檢視-Commit-的檔案紀錄" class="headerlink" title="檢視 Commit 的檔案紀錄"></a>檢視 Commit 的檔案紀錄</h2><h3 id="找出誰養的蟲"><a href="#找出誰養的蟲" class="headerlink" title="找出誰養的蟲"></a>找出誰養的蟲</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git blame index.html</span><br></pre></td></tr></table></figure>
+
+<h1 id="拯救手殘不小心把檔案或目錄刪掉的人"><a href="#拯救手殘不小心把檔案或目錄刪掉的人" class="headerlink" title="拯救手殘不小心把檔案或目錄刪掉的人"></a>拯救手殘不小心把檔案或目錄刪掉的人</h1><blockquote>
+<p>checkout 會將檔案或目錄復原到上一個 Commit 的狀態，所以如果加上 HEAD~2 參數會復原到兩個版本以前的檔案狀態。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout .</span><br></pre></td></tr></table></figure>
+
+<p>或是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;檔案&gt;</span><br></pre></td></tr></table></figure>
+
+<img src="/images/restore-files.jpg" />
+
+<h1 id="Commit-後想重新來一遍該怎麼做"><a href="#Commit-後想重新來一遍該怎麼做" class="headerlink" title="Commit 後想重新來一遍該怎麼做"></a>Commit 後想重新來一遍該怎麼做</h1><h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a><code>git reset</code></h2><h3 id="假設我今天寫了很笨的程式還Commit了，想要打掉重練要怎麼做"><a href="#假設我今天寫了很笨的程式還Commit了，想要打掉重練要怎麼做" class="headerlink" title="假設我今天寫了很笨的程式還Commit了，想要打掉重練要怎麼做?"></a>假設我今天寫了很笨的程式還Commit了，想要打掉重練要怎麼做?</h3><img src="/images/git-reset-01.jpg" />
+
+<blockquote>
+<p>reset 後面可再加上 [ –mixed| –soft | –hard ] <a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified">詳細說明參考</a></p>
+</blockquote>
+<p>可以輸入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset 8bfaa88^</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset master^</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD^</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset 17776c7</span><br></pre></td></tr></table></figure>
+
+<h3 id="如果我發現直接拿原本的程式直接重構比較快，想回到剛才的-Commit-要怎麼做"><a href="#如果我發現直接拿原本的程式直接重構比較快，想回到剛才的-Commit-要怎麼做" class="headerlink" title="如果我發現直接拿原本的程式直接重構比較快，想回到剛才的 Commit 要怎麼做?"></a>如果我發現直接拿原本的程式直接重構比較快，想回到剛才的 Commit 要怎麼做?</h3><blockquote>
+<p>搭配 <code>git reflog</code>，一般來說我們不會記錄 reset 前的 SHA-1 值，所以要用 <code>git reflog</code> 的紀錄來找。</p>
+</blockquote>
+<h1 id="git-branch-的操作"><a href="#git-branch-的操作" class="headerlink" title="git branch 的操作"></a><code>git branch</code> 的操作</h1><h2 id="想修改手殘打錯的-branch-名稱"><a href="#想修改手殘打錯的-branch-名稱" class="headerlink" title="想修改手殘打錯的 branch 名稱"></a>想修改手殘打錯的 branch 名稱</h2><blockquote>
+<p>可以使用 <code>-m</code> 參數。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -m &lt;old_branch_name&gt; &lt;new_branch_name&gt; </span><br></pre></td></tr></table></figure>
+
+<h2 id="刪除分支的時候"><a href="#刪除分支的時候" class="headerlink" title="刪除分支的時候"></a>刪除分支的時候</h2><blockquote>
+<p>可使用 <code>-d</code> 或 <code>-D</code> 參數。</p>
+<p><code>-D</code>：強制刪除</p>
+<p><code>-d</code>：會因為沒有被合併而無法刪除分之</p>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Git-Branching-Branch-Management">參考資料</a></p>
+</blockquote>
+<h2 id="在過去的-Commit-開啟分支的方式"><a href="#在過去的-Commit-開啟分支的方式" class="headerlink" title="在過去的 Commit 開啟分支的方式"></a>在過去的 Commit 開啟分支的方式</h2><p>第一種、</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;Commit-SHA-1值&gt;</span><br><span class="line">$ git checkout -b &lt;new-branch-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>第二種、</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch &lt;new-branch-name&gt; &lt;commit-SHA-1值&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a><code>git rebase</code></h1><h2 id="另一種分支的合併方式"><a href="#另一種分支的合併方式" class="headerlink" title="另一種分支的合併方式"></a>另一種分支的合併方式</h2><p>合併的一般做法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch master</span><br><span class="line">$ git merge &lt;your_branch_name&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>git rebase</code>：可以重新定義，分支的基準點，rebase 會再重新計算出新的 Commit 物件，再將分支指向新的 Commit 物件。可直接參考<a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-rebase">官方詳細資料</a></p>
+<p>如下圖</p>
+<img src="/images/git-rebase-01.jpg" />
+
+<img src="/images/git-rebase-02.jpg" />
+
+<img src="/images/git-rebase-03.jpg" />
+
+<h2 id="修改過去的-Commit-訊息"><a href="#修改過去的-Commit-訊息" class="headerlink" title="修改過去的 Commit 訊息"></a>修改過去的 Commit 訊息</h2><blockquote>
+<p>可以先設定 git conifg –local core.editor notepad (或是其他的編輯工具)</p>
+</blockquote>
+<ol>
+<li>先使用 <code>git log</code>查詢要修改的 Commit </li>
+</ol>
+<img src="/images/git-rebase-i-01.jpg" />
+
+<ol start="2">
+<li>接著選擇我們修改目標的前一個值，git 就會帶出比輸入的 Commit 還新的紀錄。</li>
+</ol>
+<img src="/images/git-rebase-i-02.jpg" />
+
+<img src="/images/git-rebase-i-03.jpg" />
+
+<ol start="3">
+<li>再將 pick 修改成 r，存檔關閉。</li>
+</ol>
+<img src="/images/git-rebase-i-04.jpg" />
+
+<ol start="4">
+<li>關閉後就會再自動開啟記事本修改 commit ，修改完後存檔離開。</li>
+</ol>
+<img src="/images/git-rebase-i-05.jpg" />
+
+<ol start="5">
+<li>再回去查詢一下次，就會看到 Commit 被修改。</li>
+</ol>
+<img src="/images/git-rebase-i-06.jpg" />
+
+<h1 id="git-revert"><a href="#git-revert" class="headerlink" title="git revert"></a><code>git revert</code></h1><ul>
+<li>revert 會新增一個 Commit  來取消另一個 Commit 的內容。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git revert HEAD --no-edit</span><br></pre></td></tr></table></figure>
+
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2017 Wilson Huang
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

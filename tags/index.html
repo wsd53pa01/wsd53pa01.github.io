@@ -2,22 +2,20 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>標籤 | WH 不負責任小筆記</title>
+  <title>標籤 | 不負責任筆記盒子</title>
   <meta name="keywords" content="">
-  <meta name="description" content="標籤 | WH 不負責任小筆記">
+  <meta name="description" content="標籤 | 不負責任筆記盒子">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
-<meta property="og:title" content="關於我">
-<meta property="og:url" content="http://example.com/about/index.html">
-<meta property="og:site_name" content="WH 不負責任小筆記">
+<meta property="og:title" content="分類">
+<meta property="og:url" content="http://example.com/categories/index.html">
+<meta property="og:site_name" content="不負責任筆記盒子">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-02-11T12:24:00.000Z">
-<meta property="article:modified_time" content="2021-12-31T10:24:03.479Z">
+<meta property="article:published_time" content="2020-02-10T13:20:27.000Z">
+<meta property="article:modified_time" content="2021-12-31T10:24:03.480Z">
 <meta property="article:author" content="Wilson Huang">
 <meta name="twitter:card" content="summary">
 
-
-<link rel="icon" href="/img/avatar.jpg">
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
@@ -67,7 +65,7 @@
         <a href="/"
    class="avatar_target">
     <img class="avatar"
-         src="/img/avatar.jpg"/>
+         src=""/>
 </a>
 <div class="author">
     <span>Wilson Huang</span>
@@ -296,6 +294,17 @@
         </span> -->
         
         
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
     </div>
     
     <div class="toc-ref">
@@ -324,6 +333,27 @@
 
 
 
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '8cb9c1e1c25630b2fb18',
+            clientSecret: '52f847eda54af06843006d06a1672ab69c9890ad',
+            repo: 'wsd53pa01.github.io',
+            owner: 'wsd53pa01',
+            admin: ['wsd53pa01'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
 
 
 
